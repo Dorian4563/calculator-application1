@@ -1,0 +1,118 @@
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ body {
+     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+     margin: 0;
+     background-color: #000;
+     color: #fff;
+ }
+
+ .calculator {
+     width: 320px;
+     background-color: #000;
+     border-radius: 20px;
+     padding: 20px;
+     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+ }
+
+ .display {
+     width: 100%;
+     height: 80px;
+     background-color: #000;
+     border: none;
+     border-radius: 10px;
+     font-size: 36px;
+     font-weight: 300;
+     text-align: right;
+     padding: 10px;
+     margin-bottom: 20px;
+     color: #fff;
+     overflow: hidden;
+ }
+
+ .buttons {
+     display: grid;
+     grid-template-columns: repeat(4, 1fr);
+     gap: 12px;
+ }
+
+ button {
+     height: 70px;
+     font-size: 24px;
+     font-weight: 400;
+     border: none;
+     border-radius: 50%;
+     background-color: #333;
+     color: #fff;
+     cursor: pointer;
+     transition: background-color 0.2s, transform 0.1s;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+
+ button:hover {
+     background-color: #555;
+ }
+
+ button:active {
+     transform: scale(0.95);
+ }
+
+ .clear {
+     background-color: #a6a6a6;
+     color: #000;
+ }
+
+ .clear:hover {
+     background-color: #c8c8c8;
+ }
+
+ .equals {
+     grid-column: span 1;
+     background-color: #ff9500;
+     color: #fff;
+ }
+
+ .equals:hover {
+     background-color: #e68600;
+ }
+
+ .operator {
+     background-color: #ff9500;
+     color: #fff;
+ }
+
+ .operator:hover {
+     background-color: #e68600;
+ }
+
+ .zero {
+     grid-column: span 2;
+     border-radius: 35px;
+ }
+
+ @media (max-width: 400px) {
+     .calculator {
+         width: 90%;
+         padding: 15px;
+     }
+
+     .display {
+         height: 60px;
+         font-size: 28px;
+     }
+
+     button {
+         height: 55px;
+         font-size: 20px;
+     }
+ }
