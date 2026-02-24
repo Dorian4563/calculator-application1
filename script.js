@@ -2,14 +2,13 @@ const display = document.getElementById('display')
 let expression = ''
 let lastResult = null
 
-// Safe calculation function (replaces eval)
-function calculate(expr) {
+function calculate (expr) {
   const tokens = expr.match(/(\d+\.?\d*|\+|\-|\*|\/)/g)
 
   if (!tokens) return null
 
-  let numbers = []
-  let operators = []
+  const numbers = []
+  const operators = []
 
   tokens.forEach((token) => {
     if (!isNaN(token)) {
@@ -19,7 +18,6 @@ function calculate(expr) {
     }
   })
 
-  // Handle * and /
   for (let i = 0; i < operators.length; i++) {
     if (operators[i] === '*' || operators[i] === '/') {
       const a = numbers[i]
@@ -36,7 +34,6 @@ function calculate(expr) {
     }
   }
 
-  // Handle + and -
   let result = numbers[0]
 
   for (let i = 0; i < operators.length; i++) {
@@ -58,14 +55,10 @@ document.querySelectorAll('button').forEach((button) => {
       expression = ''
       display.value = ''
       lastResult = null
-    }
-
-    else if (value === 'DEL' || value === '⌫') {
+    } else if (value === 'DEL' || value === '⌫') {
       expression = expression.slice(0, -1)
       display.value = expression
-    }
-
-    else if (value === '=') {
+    } else if (value === '=') {
       try {
         const expr = expression
           .replace(/÷/g, '/')
@@ -81,39 +74,30 @@ document.querySelectorAll('button').forEach((button) => {
         display.value = `${expression} = ${result}`
         expression = result.toString()
         lastResult = result
-
       } catch (error) {
         display.value = 'Error'
         expression = ''
         lastResult = null
       }
-    }
-
-    else if (value === '+/-') {
+    } else if (value === '+/-') {
       if (lastResult !== null) {
         lastResult = -lastResult
         display.value = lastResult.toString()
         expression = lastResult.toString()
-      } 
-      else if (expression) {
+      } else if (expression) {
         expression = (-parseFloat(expression)).toString()
         display.value = expression
       }
-    }
-
-    else if (value === '%') {
+    } else if (value === '%') {
       if (lastResult !== null) {
         lastResult = lastResult / 100
         display.value = lastResult.toString()
         expression = lastResult.toString()
-      } 
-      else if (expression) {
+      } else if (expression) {
         expression = (parseFloat(expression) / 100).toString()
         display.value = expression
       }
-    }
-
-    else {
+    } else {
       expression += value
       display.value = expression
     }
