@@ -12,7 +12,6 @@ document.querySelectorAll("button").forEach((button) => {
       lastResult = null;
     }
 
-    /* ✅ DELETE BUTTON */
     else if (value === "DEL" || value === "⌫") {
       expression = expression.slice(0, -1);
       display.value = expression;
