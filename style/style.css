@@ -99,7 +99,6 @@ button:active {
 }
 
 .zero {
-  grid-column: span 2;
   border-radius: 35px;
 }
 

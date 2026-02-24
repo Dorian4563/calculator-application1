@@ -10,46 +10,66 @@ document.querySelectorAll("button").forEach((button) => {
       expression = "";
       display.value = "";
       lastResult = null;
-    } else if (value === "=") {
+    }
+
+    /* ✅ DELETE BUTTON */
+    else if (value === "DEL" || value === "⌫") {
+      expression = expression.slice(0, -1);
+      display.value = expression;
+    }
+
+    else if (value === "=") {
       try {
         let expr = expression
           .replace(/÷/g, "/")
           .replace(/×/g, "*")
-          .replace()
           .replace(/−/g, "-");
+
         if (expr.includes("/0")) {
           throw new Error("Division by zero");
         }
+
         const result = eval(expr);
+
         display.value = `${expression} = ${result}`;
         expression = result.toString();
         lastResult = result;
+
       } catch (error) {
         display.value = "Error";
         expression = "";
         lastResult = null;
       }
-    } else if (value === "+/-") {
+    }
+
+    else if (value === "+/-") {
       if (lastResult !== null) {
         lastResult = -lastResult;
         display.value = lastResult.toString();
         expression = lastResult.toString();
-      } else if (expression) {
+      } 
+      else if (expression) {
         expression = (-parseFloat(expression)).toString();
         display.value = expression;
       }
-    } else if (value === "%") {
+    }
+
+    else if (value === "%") {
       if (lastResult !== null) {
         lastResult = lastResult / 100;
         display.value = lastResult.toString();
         expression = lastResult.toString();
-      } else if (expression) {
+      } 
+      else if (expression) {
         expression = (parseFloat(expression) / 100).toString();
         display.value = expression;
       }
-    } else {
+    }
+
+    else {
       expression += value;
       display.value = expression;
     }
+
   });
 });
