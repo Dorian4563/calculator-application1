@@ -3,6 +3,7 @@ let expression = ''
 let lastResult = null
 
 function calculate (expr) {
+  const tokens = expr.match(/(\d+\.?\d*|\+|-|\*|\/)/g)
   if (!tokens) return null
 
   const numbers = []
