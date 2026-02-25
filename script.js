@@ -3,7 +3,6 @@ let expression = ''
 let lastResult = null
 
 function calculate (expr) {
-
   if (!tokens) return null
 
   const numbers = []
