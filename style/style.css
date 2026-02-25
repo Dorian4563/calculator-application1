@@ -20,7 +20,7 @@ body {
   background-color: hwb(0deg 0% 100%);
   border-radius: 20px;
   padding: 20px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 10%);
+  box-shadow: 0 0 20px #ffffff1a;
 }
 
 .display {
